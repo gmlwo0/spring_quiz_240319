@@ -8,6 +8,6 @@ import com.quiz.weather_history.domain.WeatherHistory;
 
 @Mapper
 public interface WeatherHistoryMapper {
-	
-	public  List<WeatherHistory> selectWeatherHistoryList();	
+
+	public List<WeatherHistory> selectWeatherHistoryList();
 }

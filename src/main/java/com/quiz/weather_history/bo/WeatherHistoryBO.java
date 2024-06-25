@@ -10,13 +10,13 @@ import com.quiz.weather_history.mapper.WeatherHistoryMapper;
 
 @Service
 public class WeatherHistoryBO {
-
+	
 	@Autowired
 	private WeatherHistoryMapper weatherHistoryMapper;
-	
-	public  List<WeatherHistory> getWeatherHistoryLsit(){
-		 return weatherHistoryMapper.selectWeatherHistoryList();
-	}
 
-	
+	// input: X
+	// output: List<WeatherHistory>
+	public List<WeatherHistory> getWeatherHistoryList() {
+		return weatherHistoryMapper.selectWeatherHistoryList();
+	}
 }
