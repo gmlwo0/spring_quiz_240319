@@ -20,7 +20,7 @@
 			`weather_history`
 	</select>
 	
-<!--  	<insert id="insertWeatherHistory" parameterType="com.quiz.weather_history.domain.WeatherHistory"
+ 	<insert id="insertWeatherHistory" parameterType="com.quiz.weather_history.domain.WeatherHistory"
  	useGeneratedKeys="true" keyProperty="id">
  	 		INSERT INTO `weather_history`
  		(	
@@ -45,7 +45,7 @@
  			,NOW()
  			,NOW()
  		)
- 	</insert> -->
+ 	</insert> 
  	
  
 </mapper>
