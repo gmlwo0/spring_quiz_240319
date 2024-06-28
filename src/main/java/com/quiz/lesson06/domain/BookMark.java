@@ -2,7 +2,7 @@ package com.quiz.lesson06.domain;
 
 import java.time.LocalDateTime;
 
-public class BookMark {
+public class Bookmark {
 	private int id;
 	private String name;
 	private String url;

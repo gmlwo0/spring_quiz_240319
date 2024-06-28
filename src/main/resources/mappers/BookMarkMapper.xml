@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
-<mapper namespace="com.quiz.lesson06.mapper.BookMarkMapper">
+<mapper namespace="com.quiz.lesson06.mapper.BookmarkMapper">
 
-	<select id="selectBookmarkList" resultType="com.quiz.lesson06.domain.BookMark">
+	<select id="selectBookmarkList" resultType="com.quiz.lesson06.domain.Bookmark">
 		SELECT
 			`id`
 			,`name`
@@ -30,4 +30,26 @@
 		,NOW()
 	)
 	</insert>
+	
+	<select id="selectBookmarkListByUrl" parameterType="string" resultType="com.quiz.lesson06.domain.Bookmark">
+	
+		SELECT
+			`id`
+			,`name`
+			,`url`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`bookmark`
+		WHERE
+			`url` = #{url}
+	</select>
+	
+	<delete id="deleteBookmarkById" parameterType="int">
+		DELETE
+		FROM
+			`bookmark`
+		WHERE
+			`id`= #{id}
+	</delete>
 </mapper>
