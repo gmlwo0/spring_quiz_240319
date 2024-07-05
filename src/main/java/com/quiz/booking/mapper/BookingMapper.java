@@ -10,9 +10,8 @@ import com.quiz.booking.domain.Booking;
 
 @Mapper
 public interface BookingMapper {
-	
-	public List<Booking> selectBookingList();
 
+<<<<<<< HEAD
 	public int deleteBookingById(int id);
 	
 	public void insertBooking(
@@ -25,3 +24,22 @@ public interface BookingMapper {
 	public void checkBooking(String name, String phoneNumber); 
 }
 
+=======
+	public List<Booking> selectBookingList();
+	
+	public int deleteBookingById(int id);
+	
+	public void insertBooking(
+			@Param("name") String name, 
+			@Param("date") LocalDate date,
+			@Param("day") int day, 
+			@Param("headcount") int headcount, 
+			@Param("phoneNumber") String phoneNumber);
+	
+	// input:name, phoneNumber
+	// output: List<Booking>
+	public List<Booking> selectBookingListByNamePhoneNumber(
+			@Param("name") String name, 
+			@Param("phoneNumber") String phoneNumber);
+}
+>>>>>>> 07125c5 (2024-07-05 집)

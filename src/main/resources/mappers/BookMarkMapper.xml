@@ -52,4 +52,8 @@
 		WHERE
 			`id`= #{id}
 	</delete>
+	
+	<select id="selectBookingListByNamePhoneNumber" parameterType="map">
+	
+	</select>
 </mapper>
