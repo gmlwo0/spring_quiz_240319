@@ -24,37 +24,21 @@ public class BookingController {
 	
 	@Autowired
 	private BookingBO bookingBO;
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> 07125c5 (2024-07-05 집)
 	// 예약 목록 화면
 	@GetMapping("/booking-list-view")
 	public String bookingListView(Model model) {
 		// db select
 		List<Booking> bookingList = bookingBO.getBookingList();
 		
-<<<<<<< HEAD
-		// model에 담기
-		model.addAttribute("bookingList", bookingList);
-		
-		return "booking/bookingListView";
-=======
 		// Model에 담기
 		model.addAttribute("bookingList", bookingList);
 		
 		return "booking/bookingList";
->>>>>>> 07125c5 (2024-07-05 집)
 	}
 	
 	// AJAX - 예약 id로 삭제
 	@ResponseBody
-<<<<<<< HEAD
-	@DeleteMapping("/delete-booking")
-	public Map<String,Object> deleteBooking(
-			@RequestParam("id") int id){
-=======
 	@DeleteMapping("/delete-booking")	
 	public Map<String, Object> deleteBooking(
 			@RequestParam("id") int id) {
@@ -74,23 +58,7 @@ public class BookingController {
 		
 		return result;
 	}
->>>>>>> 07125c5 (2024-07-05 집)
 
-		// db delete
-		int rowCount = bookingBO.deleteBookingById(id);
-		
-		//응답값
-		Map<String,Object> result = new HashMap<>();
-		if (rowCount > 0) {
-			result.put("code",200);
-			result.put("result", "성공");
-		}  else {
-			result.put("code", 500);
-			result.put("error_message","삭제할 데이터가 없습니다");
-		}
-			return result;
-	}
-		
 	// 예약하기 화면
 	@GetMapping("/make-booking-view")
 	public String makeBookingView() {
@@ -100,19 +68,6 @@ public class BookingController {
 	// AJAX 요청 - add 예약
 	@ResponseBody
 	@PostMapping("/make-booking")
-<<<<<<< HEAD
-	public Map<String,Object>makeBooking(
-			@RequestParam("name")String name,
-			@RequestParam("date")LocalDate date, // String도 된다.
-			@RequestParam("day") int day,
-			@RequestParam("headcount") int  headcount,
-			@RequestParam("phoneNumber")String phoneNumber){
-		
-		// db insert
-		bookingBO.addBooking(name,date,day,headcount,phoneNumber);
-		// 응답값
-		Map<String,Object> result = new HashMap<>();
-=======
 	public Map<String, Object> makeBooking(
 			@RequestParam("name") String name,
 			@RequestParam("date") LocalDate date, // String도 된다
@@ -125,41 +80,17 @@ public class BookingController {
 		
 		// 응답값
 		Map<String, Object> result = new HashMap<>();
->>>>>>> 07125c5 (2024-07-05 집)
 		result.put("code", 200);
 		result.put("result", "성공");
 		return result;
 	}
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> 07125c5 (2024-07-05 집)
 	// 예약확인 화면
 	@GetMapping("/check-booking-view")
 	public String checkBookingView() {
 		return "booking/checkBooking";
 	}
 	
-<<<<<<< HEAD
-	// AJAX에 요청 - 예약 조회
-	@ResponseBody
-	@PostMapping("/check-booking")
-	public Map<String,Object>checkBooking(
-			@RequestParam("name")String name,
-			@RequestParam("phoneNumber")String phoneNumber){
-			
-			// db select
-			bookingBO.checkBooking(name, phoneNumber);
-			
-			// 응답값 => JSON
-			Map<String,Object> result = new HashMap<>();
-			result.put("code", 200);
-			result.put("result", "성공");
-			return result;
-	}
-}
-=======
 	// AJAX 요청 - 예약 조회
 	@ResponseBody
 	@PostMapping("/check-booking")
@@ -186,4 +117,3 @@ public class BookingController {
 		return result;
 	}
 }
->>>>>>> 07125c5 (2024-07-05 집)

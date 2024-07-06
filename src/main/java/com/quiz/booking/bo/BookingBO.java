@@ -16,7 +16,7 @@ public class BookingBO {
 	@Autowired
 	private BookingMapper bookingMapper;
 
-<<<<<<< HEAD
+
 	//  input: X
 	// output: List<Booking>
 	public List<Booking> getBookingList(){
@@ -37,26 +37,7 @@ public class BookingBO {
 	public void checkBooking(String name, String phoneNumber) {
 		bookingMapper.checkBooking(name, phoneNumber);
 	}
-}
-=======
-	// input: X
-	// output: List<Booking>
-	public List<Booking> getBookingList() {
-		return bookingMapper.selectBookingList();
-	}
-	
-	// input:id
-	// output:int
-	public int deleteBookingById(int id) {
-		return bookingMapper.deleteBookingById(id);
-	}
-	
-	public void addBooking(String name, LocalDate date,
-			int day, int headcount, String phoneNumber) {
-		
-		bookingMapper.insertBooking(name, date, day, headcount, phoneNumber);
-	}
-	
+
 	// input: name, phoneNumber
 	// output: Booking(최신) or null
 	public Booking getLatestBookingByNamePhoneNumber(String name, String phoneNumber) {
@@ -69,4 +50,4 @@ public class BookingBO {
 		return bookingList.isEmpty() ? null : bookingList.get(bookingList.size() - 1);
 	}
 }
->>>>>>> 07125c5 (2024-07-05 집)
+

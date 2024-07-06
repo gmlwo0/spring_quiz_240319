@@ -17,10 +17,10 @@
 	    </header>
 	    <nav>
 	        <ul class="nav nav-fill">
-	            <li class="nav-item"><a href="#" class="nav-link  font-weight-bold">팬션소개</a></li>
-	            <li class="nav-item"><a href="#" class="nav-link  font-weight-bold">객실보기</a></li>
-	            <li class="nav-item"><a href="/booking/make-booking-view" class="nav-link  font-weight-bold">예약하기</a></li>
-	            <li class="nav-item"><a href="/booking/booking-list-view" class="nav-link  font-weight-bold">예약목록</a></li>
+	            <li class="nav-item"><a href="#" class="nav-link text-white font-weight-bold">팬션소개</a></li>
+	            <li class="nav-item"><a href="#" class="nav-link text-white font-weight-bold">객실보기</a></li>
+	            <li class="nav-item"><a href="/booking/make-booking-view" class="nav-link text-white font-weight-bold">예약하기</a></li>
+	            <li class="nav-item"><a href="/booking/booking-list-view" class="nav-link text-white font-weight-bold">예약목록</a></li>
 	        </ul>
 	    </nav>
 	    <section class="banner bg-info">
@@ -63,20 +63,25 @@
 	        </small>
 	    </footer>
 	</div>
+	
 	<script>
-		$(document).ready(function(){
-			$("#checkBookingBtn").on('click',function(){
+		$(document).ready(function() {
+			// 조회 버튼
+			$("#checkBookingBtn").on('click', function() {
+				//alert("조회");
 				let name = $("#name").val().trim();
-				let phoneNumber = $("#phoneNumber").val.trim();
+				let phoneNumber = $("#phoneNumber").val().trim();
 				
 				if (!name) {
-					alert ("이름을 입력하세요");
+					alert("이름을 입력하세요");
 					return;
 				}
+				
 				if (!phoneNumber) {
-					alert("전화번호를 선택하세요");
+					alert("번호를 입력하세요");
 					return;
 				}
+				
 				console.log(name);
 				console.log(phoneNumber);
 				
@@ -84,25 +89,31 @@
 					// request
 					type:"POST"
 					, url:"/booking/check-booking"
-					, data:{"name":name,"phoneNumber":phoneNumber}
+					, data:{"name":name, "phoneNumber":phoneNumber}
 					
 					// response
-					, success:function(data){
-						// {"code":200, "result":"성공"}
-						if (data.code == 200) {
-							alert(".")
-							location.href = "/booking/check-booking-view";
+					, success:function(data) {
+						if (data.code == 500) {
+							// 예약 없음
+							// {"code":500, "error_message":"예약 내역이 없습니다."}
+							alert(data.error_message);
+						} else if (data.code == 200) {
+							// 성공
+							// {"code":200, "result":{"id":3, "name":"신보람"....}}
+							alert("이름:" + data.result.name 
+									+ "\n날짜:" + data.result.date
+									+ "\n일수:" + data.result.day
+									+ "\n인원:" + data.result.headcount
+									+ "\n상태:" + data.result.state);
 						}
 						
 					}
-					
-					, error:function(error){
+					, error:function(error) {
 						alert("조회하는데 실패했습니다.");
 					}
-			
-			});			
+				});
+			});
 		});
-	});
 	</script>
 </body>
 </html>
